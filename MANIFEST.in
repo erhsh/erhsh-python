@@ -1,0 +1,4 @@
+graft erhsh
+prune tests
+
+global-exclude *.py[cod]

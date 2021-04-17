@@ -1,0 +1,7 @@
+mindspore
+numpy
+click
+pillow
+pytest
+setuptools
+matplotlib
