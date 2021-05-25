@@ -4,6 +4,7 @@ import click
 
 import erhsh
 from erhsh.ms.tools.ckpt import MsCkptLoader
+from erhsh.ms.tools.bin_tool import BinLoader
 from erhsh.ms.tools.hccl_tool import gen_rank_table_file
 from erhsh.ms.tools.hccl_tool_v1 import gen_rank_table_file as gen_rank_table_file_v1
 
@@ -63,6 +64,14 @@ def ckpt(ckpt_path, filter_key, key, dump, dump_to):
             ms_loader.list_dump(filter_key=filter_key, dump_to=dump_to)
         else:
             ms_loader.list(filter_key=filter_key)
+
+
+@ms_cli.command("bin", help="Get bin information")
+@click.option("--bin_path", "-p", required=True, help="bin file path")
+def bin(bin_path):
+    bin_loader = BinLoader(bin_path).load()
+    bin_loader.is_nan_exist()
+    bin_loader.print_bin()
 
 
 if __name__ == '__main__':

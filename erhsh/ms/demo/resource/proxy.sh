@@ -12,7 +12,7 @@ password=$(echo "$password" | tr -d '\n' | xxd -plain | sed 's/\(..\)/%\1/g')
 proxy="http://$username:$password@$addr:$port"
 
 echo -e "\n--------------"
-echo -e "set success. proxy=" "$proxy"
+echo -e "set success."
 
 export ftp_proxy=$proxy
 export http_proxy=$proxy
