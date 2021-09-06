@@ -18,7 +18,7 @@ Firstly, get the source code and to compile it yourself. Or install it by pip di
 ### 1. Download Source code
 
 ```shell script
-git clone https://github.org/erhsh/erhsh-python.git
+git clone https://github.com/erhsh/erhsh-python.git
 ```
 
 ### 2. Build & Develop
