@@ -6,6 +6,8 @@ from erhsh.tools.git_helper import git_helper
 from erhsh.tools.jupyter_helper import jupyter_helper
 from erhsh.tools.vim_helper import vim_helper
 
+from erhsh import utils as eut
+
 
 def print_version(ctx, param, value):
     if not value or ctx.resilient_parsing:
@@ -39,6 +41,18 @@ def bash():
 @tools_cli.command("jupyter", help="Get Jupyter Helper")
 def jupyter():
     jupyter_helper.show()
+
+
+@tools_cli.command("gray2rgb", help="Conver Gray Image to RGB")
+@click.option("--src_path", "-s", required=True, help="src gray image file path")
+@click.option("--dest_path", "-d", default="./", help="src gray image file path")
+@click.option("--h_num", "-h", default=1, help="src gray image file path")
+@click.option("--w_num", "-w", default=1, help="src gray image file path")
+def gray2rgb(src_path, dest_path, h_num, w_num):
+    if h_num > 1 or w_num > 1:
+        eut.convertGray2RGB_Muti(src_path, dest_path=dest_path, h_num=h_num, w_num=w_num)
+    else:
+        eut.convertGray2RGB(src_path, dest_path=dest_path)
 
 
 if __name__ == '__main__':

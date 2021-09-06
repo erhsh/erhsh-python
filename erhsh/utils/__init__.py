@@ -16,4 +16,5 @@ __all__ = [
     "get_logger",
     "gray2RGB",
     "convertGray2RGB",
+    "convertGray2RGB_Muti",
 ]

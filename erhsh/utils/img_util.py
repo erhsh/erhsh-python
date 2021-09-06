@@ -57,8 +57,37 @@ def convertGray2RGB(img_path, dest_path=None):
     im.save(dest_path)
     print(">>> save to dest_path={} success.".format(dest_path))
 
+def convertGray2RGB_Muti(img_path, dest_path=None, h_num=1, w_num=1):
+    print(">>> img_path={}, dest_path={}".format(img_path, dest_path))
+    img_data = Image.open(img_path).convert("L")
+    img_np = np.array(img_data)
+ 
+    from erhsh import utils as eut
+
+    processor = eut.MutiProcessor(img_np, h_num, w_num, cube_func=gray2RGB)
+    ret = processor.process()
+
+    if dest_path is None:
+        name = os.path.splitext(img_path)[0]
+        ext = os.path.splitext(img_path)[1]
+        dest_path = "{}_rgb{}".format(name, ext)
+    elif os.path.isdir(dest_path):
+        basename = os.path.basename(img_path)
+        name = os.path.splitext(basename)[0]
+        ext = os.path.splitext(basename)[1]
+        dest_path = os.path.join(dest_path, "{}_rgb{}".format(name, ext))
+
+    to_image = Image.new("RGB", img_np.shape[:2][::-1])
+    for k, v in ret.items():
+        h_s, w_s, _, _ = tuple([int(x) for x in k.split("_")])
+        to_image.paste(Image.fromarray(v), (w_s, h_s))
+
+    to_image.save(dest_path)
+
+
 if __name__ == '__main__':
     rand_np = np.random.randint(0, 11, (512, 512), dtype=np.uint8)
     img_np = Image.fromarray(rand_np)
     img_np.save("tmp.png")
     convertGray2RGB("tmp.png", "./")
+    convertGray2RGB_Muti("tmp.png", "./tmp_rgb_muti.png", h_num=2, w_num=2)
