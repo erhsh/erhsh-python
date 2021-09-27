@@ -2,6 +2,8 @@ from .file_util import *
 from .print_util import *
 from .safe_convert import *
 from .img_util import *
+from .img_comp_split import *
+from .calc_iou import *
 from .logger_util import *
 from .mutiprocessing_util import *
 
@@ -17,4 +19,8 @@ __all__ = [
     "gray2RGB",
     "convertGray2RGB",
     "convertGray2RGB_Muti",
+    "convertRGB2Gray",
+    "convertRGB2Gray_Muti",
+    "calc_mean_iou",
+    "img_compose",
 ]

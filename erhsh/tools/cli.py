@@ -45,14 +45,26 @@ def jupyter():
 
 @tools_cli.command("gray2rgb", help="Conver Gray Image to RGB")
 @click.option("--src_path", "-s", required=True, help="src gray image file path")
-@click.option("--dest_path", "-d", default="./", help="src gray image file path")
-@click.option("--h_num", "-h", default=1, help="src gray image file path")
-@click.option("--w_num", "-w", default=1, help="src gray image file path")
+@click.option("--dest_path", "-d", default="./", help="dest RGB image file path")
+@click.option("--h_num", "-h", default=1, help="h num for parallel execute")
+@click.option("--w_num", "-w", default=1, help="w num for parallel execute")
 def gray2rgb(src_path, dest_path, h_num, w_num):
     if h_num > 1 or w_num > 1:
         eut.convertGray2RGB_Muti(src_path, dest_path=dest_path, h_num=h_num, w_num=w_num)
     else:
         eut.convertGray2RGB(src_path, dest_path=dest_path)
+
+
+@tools_cli.command("gray2rgb", help="Conver RGB Image to Gray")
+@click.option("--src_path", "-s", required=True, help="src RGB image file path")
+@click.option("--dest_path", "-d", default="./", help="dest gray image file path")
+@click.option("--h_num", "-h", default=1, help="h num for parallel execute")
+@click.option("--w_num", "-w", default=1, help="w num for parallel execute")
+def rgb2gray(src_path, dest_path, h_num, w_num):
+    if h_num > 1 or w_num > 1:
+        eut.convertRGB2Gray_Muti(src_path, dest_path=dest_path, h_num=h_num, w_num=w_num)
+    else:
+        eut.convertRGB2Gray(src_path, dest_path=dest_path)
 
 
 if __name__ == '__main__':

@@ -5,11 +5,10 @@ import inspect
 
 
 class MutiProcessor():
-    def __init__(self, np_data, data_name="", h_num=1, w_num=1, cube_func=None):
+    def __init__(self, np_data, h_num=1, w_num=1, cube_func=None):
         if len(np_data.shape) < 2:
             raise Exception("np_data must at least have dim 2.")
         self.np_data = np_data
-        self.data_name = data_name
 
         self.h_size, self.w_size = np_data.shape[:2]
         print(">>>>>>>-- self.h_size", self.h_size, ", self.w_size=", self.w_size)

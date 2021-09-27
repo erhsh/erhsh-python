@@ -12,7 +12,7 @@ def print_ds_info(ds, prefix="|-"):
     print("{}output_types={}".format(prefix, ds.output_types()), flush=True)
     print("{}output_shapes={}".format(prefix, ds.output_shapes()), flush=True)
 
-    for x in ds.create_dict_iterator():
+    for x in ds.create_dict_iterator(output_numpy=True):
         keys = x.keys()
         for k in keys:
             v = x.get(k)
@@ -35,7 +35,7 @@ def print_ds_performance(ds, step1=10, step2=None, decimals=9, prefix="|-"):
     i = 0
     costs = []
     ss_time = s_time = time.time()
-    for _ in ds.create_dict_iterator():
+    for _ in ds.create_dict_iterator(output_numpy=True):
         i += 1
         e_time = time.time()
         c_time = round(e_time - s_time, decimals)
@@ -67,7 +67,7 @@ def _get_value(v):
 
 def print_ds_data(ds, prefix=">>>", row_limit=10, col_limit=100):
     i = 0
-    for x in ds.create_dict_iterator():
+    for x in ds.create_dict_iterator(output_numpy=True):
         i += 1
         if i > row_limit:
             break
