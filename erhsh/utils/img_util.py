@@ -23,6 +23,7 @@ PIXEL_TO_RGB = {
 
 RGB_TO_PIXEL = {"_".join([str(v) for v in value]): key for key, value in PIXEL_TO_RGB.items()}
 
+
 def gray2RGB(img):
     H, W = img.shape
     print(">>>>>>>>>>", img)
@@ -34,6 +35,7 @@ def gray2RGB(img):
             img_rgb[i][j] = rgb
     return img_rgb
 
+
 def RGB2gray(img_rgb):
     H, W, C = img_rgb.shape
     img = np.zeros((H, W), dtype=np.uint8)
@@ -44,6 +46,7 @@ def RGB2gray(img_rgb):
             k = RGB_TO_PIXEL.get(rgb, 255)
             img[i][j] = k
     return img
+
 
 def convertGray2RGB(img_path, dest_path=None):
     print(">>> img_path={}, dest_path={}".format(img_path, dest_path))
@@ -69,6 +72,7 @@ def convertGray2RGB(img_path, dest_path=None):
     print(">>> save to dest_path={} start...".format(dest_path))
     im.save(dest_path)
     print(">>> save to dest_path={} success.".format(dest_path))
+
 
 def convertGray2RGB_Muti(img_path, dest_path=None, h_num=1, w_num=1):
     print(">>> img_path={}, dest_path={}".format(img_path, dest_path))
@@ -97,6 +101,7 @@ def convertGray2RGB_Muti(img_path, dest_path=None, h_num=1, w_num=1):
 
     to_image.save(dest_path)
 
+
 def convertRGB2Gray(img_path, dest_path=None):
     print(">>> img_path={}, dest_path={}".format(img_path, dest_path))
     img_data = Image.open(img_path)
@@ -121,6 +126,7 @@ def convertRGB2Gray(img_path, dest_path=None):
     print(">>> save to dest_path={} start...".format(dest_path))
     img_gray.save(dest_path)
     print(">>> save to dest_path={} success.".format(dest_path))
+
 
 def convertRGB2Gray_Muti(img_path, dest_path=None, h_num=1, w_num=1):
     print(">>> img_path={}, dest_path={}".format(img_path, dest_path))
@@ -148,6 +154,7 @@ def convertRGB2Gray_Muti(img_path, dest_path=None, h_num=1, w_num=1):
         to_image.paste(Image.fromarray(v), (w_s, h_s))
 
     to_image.save(dest_path)
+
 
 if __name__ == '__main__':
     mock_gray_img_path = "tmp_gray.png"

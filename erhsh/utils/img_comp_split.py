@@ -58,80 +58,46 @@ def img_compose(image_names, H_NUM=None, W_NUM=None):
 
 
 if __name__ == '__main__':
+    names = """
+        GF2_PMS1__L1A0000647768-MSS1
+        GF2_PMS1__L1A0001094941-MSS1
+        GF2_PMS1__L1A0001169100-MSS1
+        GF2_PMS1__L1A0001491417-MSS1
+        GF2_PMS1__L1A0001537716-MSS1
+        GF2_PMS1__L1A0001553848-MSS1
+        GF2_PMS1__L1A0001562063-MSS1
+        GF2_PMS1__L1A0001734328-MSS1
+        GF2_PMS2__L1A0000564692-MSS2
+        GF2_PMS2__L1A0000647892-MSS2
+        GF2_PMS2__L1A0000718813-MSS2
+        GF2_PMS2__L1A0000948183-MSS2
+        GF2_PMS2__L1A0001015596-MSS2
+        GF2_PMS2__L1A0001028977-MSS2
+        GF2_PMS2__L1A0001035795-MSS2
+        GF2_PMS2__L1A0001119060-MSS2
+        GF2_PMS2__L1A0001336975-MSS2
+        GF2_PMS2__L1A0001378491-MSS2
+        GF2_PMS2__L1A0001389317-MSS2
+        GF2_PMS2__L1A0001416140-MSS2
+        GF2_PMS2__L1A0001457157-MSS2
+        GF2_PMS2__L1A0001537637-MSS2
+        GF2_PMS2__L1A0001566653-MSS2
+        GF2_PMS2__L1A0001577567-MSS2
+        GF2_PMS2__L1A0001633212-MSS2
+        GF2_PMS2__L1A0001708232-MSS2
+        GF2_PMS2__L1A0001757317-MSS2
+        GF2_PMS2__L1A0001757484-MSS2
+        GF2_PMS2__L1A0001787080-MSS2
+        GF2_PMS2__L1A0001886305-MSS2
+    """
 
-    base_dir = "D:\\cj\whu_16384_16384_lasted_realmask_aug\\pictmp_random_ds_colorajust2_pic0\\"
+    names = names.split()
+    base_dir = "/home/cj/pictmp.gid_gray/"
 
-    paths = [
-        os.path.join(base_dir, "0_class_1_rank{}.png"),
-        os.path.join(base_dir, "0_class_2_rank{}.png"),
-        os.path.join(base_dir, "0_class_4_rank{}.png"),
-        os.path.join(base_dir, "0_class_5_rank{}.png"),
-    ]
-    image_path = [[
-        os.path.join(base_dir, "0_class_1_rank0~32.png"),
-        os.path.join(base_dir, "0_class_2_rank0~32.png"),
-    ], [
-        os.path.join(base_dir, "0_class_4_rank0~32.png"),
-        os.path.join(base_dir, "0_class_5_rank0~32.png"),
-    ],
-    ]
+    img_paths = [os.path.join(base_dir, "{}_rank{}.tif".format(x, "{}")) for x in names]
+    for p in img_paths:
+        img_compose(p, W_NUM=32)
 
-    # base_dir = "D:\\cj\whu_16384_16384_lasted_realmask_aug\\random_ds_pic1\\"
-
-    # paths = [
-    #     os.path.join(base_dir, "1_class_1_rank{}.png"),
-    #     os.path.join(base_dir, "1_class_2_rank{}.png"),
-    #     os.path.join(base_dir, "1_class_4_rank{}.png"),
-    #     os.path.join(base_dir, "1_class_5_rank{}.png"),
-    # ]
-    # image_path = [[
-    #     os.path.join(base_dir, "1_class_1_rank0~32.png"),
-    #     os.path.join(base_dir, "1_class_2_rank0~32.png"),
-    # ], [
-    #     os.path.join(base_dir, "1_class_4_rank0~32.png"),
-    #     os.path.join(base_dir, "1_class_5_rank0~32.png"),
-    # ],
-    # ]
-
-    # base_dir = "D:\\cj\whu_16384_16384_lasted_realmask_aug\\random_ds_pic2\\"
-
-    # paths = [
-    #     os.path.join(base_dir, "2_class_1_rank{}.png"),
-    #     os.path.join(base_dir, "2_class_2_rank{}.png"),
-    #     os.path.join(base_dir, "2_class_3_rank{}.png"),
-    #     os.path.join(base_dir, "2_class_4_rank{}.png"),
-    # ]
-    # image_path = [[
-    #     os.path.join(base_dir, "2_class_1_rank0~32.png"),
-    #     os.path.join(base_dir, "2_class_2_rank0~32.png"),
-    # ], [
-    #     os.path.join(base_dir, "2_class_3_rank0~32.png"),
-    #     os.path.join(base_dir, "2_class_4_rank0~32.png"),
-    # ],
-    # ]
-
-    base_dir = "D:\\cj\whu_16384_16384_lasted_realmask_aug\\random_ds_pic3\\"
-
-    paths = [
-        os.path.join(base_dir, "3_class_1_rank{}.png"),
-        os.path.join(base_dir, "3_class_2_rank{}.png"),
-        os.path.join(base_dir, "3_class_3_rank{}.png"),
-        os.path.join(base_dir, "3_class_4_rank{}.png"),
-        os.path.join(base_dir, "3_class_5_rank{}.png"),
-        os.path.join(base_dir, "3_class_6_rank{}.png"),
-    ]
-    image_path = [[
-        os.path.join(base_dir, "3_class_1_rank0~32.png"),
-        os.path.join(base_dir, "3_class_2_rank0~32.png"),
-    ], [
-        os.path.join(base_dir, "3_class_3_rank0~32.png"),
-        os.path.join(base_dir, "3_class_4_rank0~32.png"),
-    ], [
-        os.path.join(base_dir, "3_class_5_rank0~32.png"),
-        os.path.join(base_dir, "3_class_6_rank0~32.png"),
-    ],
-    ]
-
-    # for path in paths:
-    #     img_compose(path, W_NUM=32)
-    img_compose(image_path)
+    lbl_paths = [os.path.join(base_dir, "{}_lbl_rank{}.tif".format(x, "{}")) for x in names]
+    for p in lbl_paths:
+        img_compose(p, W_NUM=32)
