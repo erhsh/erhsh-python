@@ -67,5 +67,11 @@ def rgb2gray(src_path, dest_path, h_num, w_num):
         eut.convertRGB2Gray(src_path, dest_path=dest_path)
 
 
+@tools_cli.command("loadnpy", help="load npy from file and print npy datas")
+@click.option("--src_path", "-s", required=True, help="npy file path")
+def loadnpy(src_path):
+    eut.load_npy(src_path)
+
+
 if __name__ == '__main__':
     tools_cli()

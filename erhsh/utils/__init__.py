@@ -6,6 +6,7 @@ from .img_comp_split import *
 from .calc_iou import *
 from .logger_util import *
 from .mutiprocessing_util import *
+from .npy_loader import *
 
 __all__ = [
     "list_sub_dirs",
@@ -23,4 +24,5 @@ __all__ = [
     "convertRGB2Gray_Muti",
     "calc_mean_iou",
     "img_compose",
+    "load_npy",
 ]
