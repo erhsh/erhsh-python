@@ -78,5 +78,17 @@ def train(name, fetch_to, view):
         mgmt.print_demo_list()
 
 
+@msd_cli.command("modelarts", help="modelarts demo Fetcher")
+@click.argument("name", type=str, default="")
+@click.option("--fetch_to", "-ft", type=str, help="fetch to DIR.")
+@click.option("--view", "-v", is_flag=True, default=False, help="view in screen")
+def train(name, fetch_to, view):
+    mgmt = demo_mgmt.DemoMgmt(name="modelarts", dir_name="modelarts")
+    if name:
+        mgmt.fetch_demo(name, fetch_to, view)
+    else:
+        mgmt.print_demo_list()
+
+
 if __name__ == '__main__':
     msd_cli()

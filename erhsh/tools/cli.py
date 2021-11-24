@@ -55,7 +55,7 @@ def gray2rgb(src_path, dest_path, h_num, w_num):
         eut.convertGray2RGB(src_path, dest_path=dest_path)
 
 
-@tools_cli.command("gray2rgb", help="Conver RGB Image to Gray")
+@tools_cli.command("rgb2gray", help="Conver RGB Image to Gray")
 @click.option("--src_path", "-s", required=True, help="src RGB image file path")
 @click.option("--dest_path", "-d", default="./", help="dest gray image file path")
 @click.option("--h_num", "-h", default=1, help="h num for parallel execute")
